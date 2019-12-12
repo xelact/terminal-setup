@@ -1,0 +1,119 @@
+" Install vundle: git clone https://github.com/VundleVim/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
+" Install all plugins :PluginInstall
+"
+syntax on
+colorscheme default
+
+" Vundle VIM
+"""""""""""""""""""
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+" added nerdtree
+Plugin 'scrooloose/nerdtree'
+
+" added vim-airline
+Plugin 'vim-airline/vim-airline'
+
+" adding themes to vim-airline
+Plugin 'vim-airline/vim-airline-themes'
+
+" adding fonts for airline
+Plugin 'powerline/powerline-fonts'
+
+" Plugin adding colorschemes
+Plugin 'flazz/vim-colorschemes'
+
+" Plugin for completing in Python
+Plugin 'davidhalter/jedi-vim'
+
+" Add plugins here
+
+call vundle#end()
+filetype plugin indent on
+
+set clipboard=unnamed
+
+" Rebind <Leader> key
+" I like to have it here becuase it is easier to reach than the default and
+" it is next to ``m`` and ``n`` which I use for navigating between tabs.
+let mapleader = ","
+
+" bind Ctrl+<movement> keys to move around the windows, instead of using
+" " Ctrl+w + <movement>
+" " Every unnecessary keystroke that can be saved is good for your health :)
+nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" easier moving between tabs
+map <Leader>n <esc>:tabprevious<CR>
+map <Leader>m <esc>:tabnext<CR>
+
+" Automatic reloading of .vimrc
+autocmd! bufwritepost .vimrc source %
+
+" <CR> highlights all occurences of the current word without moving
+nnoremap <CR> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+" Highlight trailing whitespaces
+highlight Error ctermbg=red ctermfg=white guibg=red guifg=white
+autocmd ColorScheme * highlight Error ctermbg=red ctermfg=white guibg=red guifg=white
+match Error '\s\+$'
+autocmd WinEnter,BufWinEnter * match Error /\s\+$/
+autocmd InsertEnter * match Error /\s\+\%#\@<!$/
+autocmd InsertLeave * match Error /\s\+$/
+autocmd WinLeave,BufWinLeave * match Error //
+
+" Highlight tabs
+highlight SpecialKey ctermfg=1
+set list
+set listchars=tab:T>
+
+" strip all trailing whitespace in the current file with <leader>W
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+"set numbers
+set number
+
+"SEARCHES
+""""""""""""""""""""
+set hlsearch "highlight searches
+set incsearch "start highlighting before press CR
+set ignorecase "case insensitive
+set smartcase "use case if any caps used
+
+" NERDTree
+""""""""""""""""""""
+" auto open NERDTREE
+au VimEnter *  NERDTree
+
+" if you dont want to see ^G
+let g:NERDTreeNodeDelimiter = "\u00a0"
+
+" show hidden files
+let NERDTreeShowHidden=1
+
+" I think this is for moving the line that separate the
+" pane with dirs
+map + <c-w>>
+map - <c-w><
+
+" Color scheme
+set t_Co=256
+color monokai
+
+
+"VIM-AIRLINE (line status)
+""""""""""""""""""""""""""
+let g:airline_theme='aurora'
+let g:airline_powerline_fonts = 1
+
+" command for quiting nerdtree when only one file is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
