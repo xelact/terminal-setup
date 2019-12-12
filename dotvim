@@ -106,7 +106,7 @@ map - <c-w><
 
 " Color scheme
 set t_Co=256
-color monokai
+color Monokai
 
 
 "VIM-AIRLINE (line status)
