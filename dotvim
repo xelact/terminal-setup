@@ -61,6 +61,19 @@ autocmd! bufwritepost .vimrc source %
 " <CR> highlights all occurences of the current word without moving
 nnoremap <CR> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
 " Highlight trailing whitespaces
 highlight Error ctermbg=red ctermfg=white guibg=red guifg=white
 autocmd ColorScheme * highlight Error ctermbg=red ctermfg=white guibg=red guifg=white
@@ -91,7 +104,10 @@ set smartcase "use case if any caps used
 " NERDTree
 """"""""""""""""""""
 " auto open NERDTREE
-au VimEnter *  NERDTree
+"au VimEnter *  NERDTree
+
+"open NerdTree
+nmap <leader>ne :NERDTreeToggle<CR>
 
 " if you dont want to see ^G
 let g:NERDTreeNodeDelimiter = "\u00a0"
@@ -111,7 +127,7 @@ color Monokai
 
 "VIM-AIRLINE (line status)
 """"""""""""""""""""""""""
-let g:airline_theme='aurora'
+let g:airline_theme='base16_monokai'
 let g:airline_powerline_fonts = 1
 
 " command for quiting nerdtree when only one file is open
