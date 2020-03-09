@@ -20,3 +20,12 @@ cd fonts
 ```
 
 After installing them you have to select the powerline font in your terminal.
+
+## Oh my ZSH
+
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+cd
+ln -s .vim/vim-config/dotzsh .zshrc
+```
