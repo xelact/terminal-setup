@@ -10,3 +10,13 @@ ln -s .vim/vim-config/dotvim .vimrc
 ```
 
 Then into vim you have to install the plugins with `:PluginInstall`
+
+## Installing fonts for powerline:
+```
+cd
+git clone https://github.com/powerline/fonts.git
+cd fonts
+./install.sh
+```
+
+After installing them you have to select the powerline font in your terminal.

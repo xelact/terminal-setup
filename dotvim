@@ -74,6 +74,9 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+" strip all trailing whitespace in the current file with <leader>W
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
 " Highlight trailing whitespaces
 highlight Error ctermbg=red ctermfg=white guibg=red guifg=white
 autocmd ColorScheme * highlight Error ctermbg=red ctermfg=white guibg=red guifg=white
