@@ -1,4 +1,4 @@
-# vim-config
+# Terminal-setup
 
 In Linux:
 
