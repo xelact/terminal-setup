@@ -113,7 +113,7 @@ set smartcase "use case if any caps used
 nmap <leader>ne :NERDTreeToggle<CR>
 
 " if you dont want to see ^G
-let g:NERDTreeNodeDelimiter = "\u00a0"
+" let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " show hidden files
 let NERDTreeShowHidden=1

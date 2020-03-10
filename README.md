@@ -29,3 +29,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 cd
 ln -s .vim/vim-config/dotzsh .zshrc
 ```
+
+## Tmux
+
+```
+cd
+ln -s .vim/vim-config/dottmux .tmux.conf
+``
