@@ -59,10 +59,63 @@ ZSH_THEME="robbyrussell"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="dd.mm.yyyy"
 # keep 1000 lines of history witin the shell and save it to ~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=25000
+SAVEHIST=100000
+HISTORY_IGNORE="(ls|[bf]g|exit|reset|clear|cd|cd ..|cd..)"
 HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+
+LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
+export LS_COLORS
+
+# Enable color support of ls
+if [[ "$TERM" != "dumb" ]]; then
+    if [[ -x `which dircolors 2> /dev/null` ]]; then
+    eval `dircolors -b`
+    alias 'ls=ls --color=auto'
+    fi
+fi
+
+#------------------------------
+# ShellFuncs
+#------------------------------
+# -- coloured manuals
+man() {
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
+}
+
+# Fancy cd that can cd into parent directory, if trying to cd into file.
+# useful with ^F fuzzy searcher.
+cd() {
+    if (( $+2 )); then
+        builtin cd "$@"
+        return 0
+    fi
+
+    if [ -f "$1" ]; then
+        echo "${yellow}cd ${1:h}${NC}" >&2
+        builtin cd "${1:h}"
+    else
+        builtin cd "${@}"
+    fi
+}
+
+
+# Quick find
+f() {
+    echo "find . -iname \"*$1*\""
+    find . -iname "*$1*"
+}
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
