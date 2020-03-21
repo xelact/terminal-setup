@@ -30,6 +30,15 @@ Plugin 'flazz/vim-colorschemes'
 " Plugin for completing in Python
 Plugin 'davidhalter/jedi-vim'
 
+" Plugin for sorting imports in Python: :Isort  after pip3 install isort
+Plugin 'fisadev/vim-isort'
+
+"Plugin for git
+Plugin 'tpope/vim-fugitive'
+
+" Plugin for moving from vim to tmux panes: https://github.com/christoomey/vim-tmux-navigator
+Plugin 'christoomey/vim-tmux-navigator'
+
 " Add plugins here
 
 call vundle#end()
