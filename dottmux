@@ -3,12 +3,25 @@ unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
+# reload tmux configuration with Ctrl+A r
+bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+
 #########
 #VI MODE#
 #########
 set-window-option -g mode-keys vi
 
-# Enable mouse
+# Toggle mouse on
+# Tips: When mouse is on ans you select text, you can copy it with Ctrl+A ]
+#       You can avoid tmux selection by pressing Shift/Option when selecting text
+bind-key M \
+    set-option -g mouse on \;\
+    display-message 'Mouse: ON'
+
+     # Toggle mouse off
+bind-key m \
+    set-option -g mouse off \;\
+    display-message 'Mouse: OFF'
 set -g mouse on
 set-option -g mouse on
 
