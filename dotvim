@@ -64,6 +64,10 @@ nnoremap <c-l> <c-w>l
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
+" https://github.com/christoomey/vim-tmux-navigator/issues/72#issuecomment-103578088
+" Solution to the delay expected when moving out vim to a tmux pane
+set shell=/bin/zsh
+
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
