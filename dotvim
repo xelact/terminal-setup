@@ -131,6 +131,9 @@ nmap <leader>ne :NERDTreeToggle<CR>
 " show hidden files
 let NERDTreeShowHidden=1
 
+let g:NERDTreeMapJumpPrevSibling=""
+let g:NERDTreeMapJumpNextSibling=""
+
 " I think this is for moving the line that separate the
 " pane with dirs
 map + <c-w>>
