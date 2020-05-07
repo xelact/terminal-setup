@@ -26,7 +26,7 @@ set -g mouse on
 set-option -g mouse on
 
 # change the history of tmux
-set-option -g history-limit 5000
+set-option -g history-limit 50000
 
 # using CTRL + h, j, k, l for moving among panes, if the pane is vim
 # it is send the appropriate vim split navigation command.

@@ -78,6 +78,8 @@ if [[ "$TERM" != "dumb" ]]; then
     fi
 fi
 
+EDITOR=vim
+
 #------------------------------
 # ShellFuncs
 #------------------------------
@@ -162,3 +164,5 @@ source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

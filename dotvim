@@ -39,6 +39,8 @@ Plugin 'tpope/vim-fugitive'
 " Plugin for moving from vim to tmux panes: https://github.com/christoomey/vim-tmux-navigator
 Plugin 'christoomey/vim-tmux-navigator'
 
+Plugin 'junegunn/fzf'
+
 " Add plugins here
 
 call vundle#end()
@@ -143,6 +145,9 @@ map - <c-w><
 set t_Co=256
 color Monokai
 
+"COMMANDS
+"""""""""
+command! -range FormatShellCmd <line1>!format_shell_cmd.py
 
 "VIM-AIRLINE (line status)
 """"""""""""""""""""""""""
