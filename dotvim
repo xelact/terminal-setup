@@ -42,6 +42,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
+Plugin 'dracula/vim', { 'name': 'dracula' }
 " Add plugins here
 
 call vundle#end()
@@ -72,7 +73,7 @@ map <Leader>m <esc>:tabnext<CR>
 
 " https://github.com/christoomey/vim-tmux-navigator/issues/72#issuecomment-103578088
 " Solution to the delay expected when moving out vim to a tmux pane
-set shell=/bin/zsh
+set shell=/bin/bash
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -147,7 +148,7 @@ map - <c-w><
 
 " Color scheme
 set t_Co=256
-color Monokai
+:silent "!colorscheme dracula"
 
 set rtp+=~/.fzf
 

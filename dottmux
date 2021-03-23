@@ -1,3 +1,8 @@
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'dracula/tmux'
+
 # remap prefix from 'C-b' to 'C-a'
 unbind C-b
 set-option -g prefix C-a
@@ -45,58 +50,8 @@ bind C-l send-keys 'C-l'
 run-shell 'tmux setenv -g TMUX_VERSION $(tmux -V | \
                             sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
 
-# status bar theme
-
-set -g status-bg 'colour235'
-
-set -g status-justify 'centre'
-set -g status-left-length '100'
-set -g status 'on'
-
-
-set -g status-right-length '100'
-
-setw -g window-status-separator ''
-
-set -g status-left '#[fg=colour232,bg=colour197] #S #[fg=colour197,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] #W #[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour231,bg=colour235] #(whoami)  #(uptime  | cut -d " " -f 1,2,3) #[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]'
-set -g status-right '#[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour231,bg=colour235] %r  %a  %Y #[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] #H #[fg=colour197,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour232,bg=colour197] #(rainbarf --battery --remaining --no-rgb) '
-setw -g window-status-format '#[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]#[default] #I  #W #[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]'
-setw -g window-status-current-format '#[fg=colour235,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] #I  #W  #F #[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]'
-
-if-shell -b '[ "$(echo "$TMUX_VERSION < 2.9" | bc)" = 1 ]'  \
-    "set -g message-command-fg 'colour222'; \
-     set -g pane-active-border-fg 'colour154'; \
-     set -g message-bg 'colour238'; \
-     set -g status-right-attr 'none'; \
-     set -g message-fg 'colour222'; \
-     set -g message-command-bg 'colour238'; \
-     set -g status-attr 'none'; \
-     set -g pane-border-fg 'colour238'; \
-     set -g status-left-attr 'none'; \
-     setw -g window-status-fg 'colour197'; \
-     setw -g window-status-attr 'none'; \
-     setw -g window-status-activity-bg 'colour235'; \
-     setw -g window-status-activity-attr 'none'; \
-     setw -g window-status-activity-fg 'colour154'; \
-     setw -g window-status-bg 'colour235';"
-
-if-shell -b '[ "$(echo "$TMUX_VERSION >= 2.9" | bc)" = 1 ]'  \
-    "set -g message-command-style fg='colour222',bg='colour238';\
-     set -g pane-active-border-style fg='colour154'; \
-     set -g message-style fg='colour222',bg='colour238'; \
-     set -g status-right-style 'none'; \
-     set -g status-style 'none'; \
-     set -g pane-border-style fg='colour238'; \
-     set -g status-left-style 'none'; \
-     setw -g window-status-style 'none',fg='colour197',bg='colour235'; \
-     setw -g window-status-activity-style 'none',bg='colour235',fg='colour154'; "
-
-# border of TMUX
-set -g pane-border-style fg=colour8
-set -g pane-active-border-style "bg=default fg=colour197"
-
-# set tmux bar to the top
-set-option -g status-position top
-
 # disable esc delay: esc + j, k were moving the size of panes
 set -s escape-time 0
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
