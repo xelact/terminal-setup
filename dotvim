@@ -231,3 +231,6 @@ if exists("+showtabline")
 endif
 
 hi Normal     ctermbg=234
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
